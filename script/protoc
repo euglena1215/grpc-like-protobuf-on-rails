@@ -1,0 +1,4 @@
+#/bin/bash
+CURRENT_PATH=`dirname $0`
+
+protoc --proto_path=./protos --ruby_out=${CURRENT_PATH}/../app/protos/ --grpc_out=${CURRENT_PATH}/../app/protos/ --plugin=protoc-gen-grpc=`which grpc_tools_ruby_protoc_plugin` ./protos/*.proto

@@ -1,0 +1,42 @@
+syntax = "proto3";
+package salary;
+
+import "google/protobuf/empty.proto";
+
+service SalaryService {
+  rpc GetSalary (GetSalaryRequest) returns (GetSalaryResponse);
+  rpc ListSalaries (ListSalariesRequest) returns (ListSalariesResponse);
+  rpc DoubleBonus (DoubleBonusRequest) returns (google.protobuf.Empty);
+  rpc UpdateMonthlySalary (UpdateMonthlySalaryRequest) returns (google.protobuf.Empty);
+}
+
+message GetSalaryRequest {
+  int64 user_id = 1;
+}
+
+message GetSalaryResponse {
+  Salary salary = 1;
+}
+
+message ListSalariesRequest {
+  int64 company_id = 1;
+}
+
+message ListSalariesResponse {
+  repeated Salary salaries = 1;
+}
+
+message DoubleBonusRequest {
+  int64 user_id = 1;
+}
+
+message UpdateMonthlySalaryRequest {
+  int64 user_id = 1;
+  int64 monthly = 2;
+}
+
+message Salary {
+  int64 monthly = 1;
+  int64 bonus = 2;
+  int64 user_id = 3;
+}
