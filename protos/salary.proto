@@ -12,6 +12,8 @@ service SalaryService {
   rpc UpdateMonthlySalary (UpdateMonthlySalaryRequest) returns (google.protobuf.Empty);
 }
 
+/* Requests & Responses */
+
 message GetSalaryRequest {
   int64 user_id = 1;
 }
@@ -37,8 +39,48 @@ message UpdateMonthlySalaryRequest {
   int64 monthly = 2;
 }
 
+/* Resources */
+
 message Salary {
   int64 monthly = 1;
   int64 bonus = 2;
   int64 user_id = 3;
 }
+
+/* Errors */
+
+message ValidationError {
+  string path = 2;  // Specify resource and field
+  string type = 3;
+  string meta = 4;  // Additional info in JSON if any
+  string full_message = 1;  // Localized user-facing message (deprecated)
+}
+
+/*
+ValidationError examples
+
+1. user name is blank
+
+{
+  path: "user.name",
+  type: "blank",
+  meta: ""
+}
+
+2. employees are absent
+
+{
+  path: "company.employees",
+  type: "absent",
+  meta: ""
+}
+
+3. name of first employees is too long
+
+{
+  path: "company.employees[0].name",
+  type: "too_long",
+  meta: "{\"max_length\": 100}"
+}
+
+*/

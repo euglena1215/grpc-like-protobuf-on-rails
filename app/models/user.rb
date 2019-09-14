@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   belongs_to :company
 
+  validates :name, presence: true, length: { maximum: 100 }
+
   def double_bonus!
     update!(bonus: bonus * 2)
   end

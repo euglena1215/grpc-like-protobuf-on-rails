@@ -30,6 +30,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bonus, :int64, 2
       optional :user_id, :int64, 3
     end
+    add_message "salary.ValidationError" do
+      optional :path, :string, 2
+      optional :type, :string, 3
+      optional :meta, :string, 4
+      optional :full_message, :string, 1
+    end
   end
 end
 
@@ -41,4 +47,5 @@ module SalaryPb
   DoubleBonusRequest = Google::Protobuf::DescriptorPool.generated_pool.lookup("salary.DoubleBonusRequest").msgclass
   UpdateMonthlySalaryRequest = Google::Protobuf::DescriptorPool.generated_pool.lookup("salary.UpdateMonthlySalaryRequest").msgclass
   Salary = Google::Protobuf::DescriptorPool.generated_pool.lookup("salary.Salary").msgclass
+  ValidationError = Google::Protobuf::DescriptorPool.generated_pool.lookup("salary.ValidationError").msgclass
 end
