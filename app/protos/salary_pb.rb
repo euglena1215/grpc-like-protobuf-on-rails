@@ -33,7 +33,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
 end
 
-module Salary
+module SalaryPb
   GetSalaryRequest = Google::Protobuf::DescriptorPool.generated_pool.lookup("salary.GetSalaryRequest").msgclass
   GetSalaryResponse = Google::Protobuf::DescriptorPool.generated_pool.lookup("salary.GetSalaryResponse").msgclass
   ListSalariesRequest = Google::Protobuf::DescriptorPool.generated_pool.lookup("salary.ListSalariesRequest").msgclass

@@ -1,6 +1,8 @@
 syntax = "proto3";
 package salary;
 
+option ruby_package = "SalaryPb";
+
 import "google/protobuf/empty.proto";
 
 service SalaryService {
