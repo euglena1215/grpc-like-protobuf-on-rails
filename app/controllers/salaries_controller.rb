@@ -26,4 +26,10 @@ class SalariesController < ApplicationController
 
     render protobuf: res
   end
+
+  private
+
+  def authorize(request)
+    super(request, policy_class: SalaryPolicy)
+  end
 end

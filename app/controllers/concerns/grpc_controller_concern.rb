@@ -9,5 +9,14 @@ module GrpcControllerConcern
     rescue_from GRPC::InvalidArgument do |e|
       render protobuf: e.to_rpc_status, status: :bad_request
     end
+
+    rescue_from Pundit::NotAuthorizedError do
+      status = Google::Rpc::Status.new(
+        code: Google::Rpc::Code::PERMISSION_DENIED,
+        message: 'Not authorized action',
+        details: []
+      )
+      render protobuf: status, status: :forbidden
+    end
   end
 end
